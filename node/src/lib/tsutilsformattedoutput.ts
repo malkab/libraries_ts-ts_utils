@@ -1,10 +1,6 @@
-import { TsUtilsTime as tsTime } from "./ts-utils-time";
+import { TsUtilsTime as tsTime } from "./tsutilstime";
 
-import { TsUtilsHashMaps } from "./ts-utils-hashmaps";
-
-
-
-
+import { TsUtilsHashMaps } from "./tsutilshashmaps";
 
 /**
  * 
