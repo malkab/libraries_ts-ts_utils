@@ -1,9 +1,11 @@
-export * from "./ts-utils-array";
+export * from "./tsutilsarray";
 
-export * from "./ts-utils-time";
+export * from "./tsutilstime";
 
-export * from "./ts-utils-hashmaps";
+export * from "./tsutilshashmaps";
 
-export * from "./ts-utils-formattedoutput";
+export * from "./tsutilsformattedoutput";
 
-export * from "./ts-utils-enums";
+export * from "./tsutilsenums";
+
+export * from "./listcollection";
