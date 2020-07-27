@@ -1,0 +1,9 @@
+name: ts-utils
+root: /home/git/malkab-libraries-ts/ts-utils
+
+windows:
+        
+  - docker-dev: 
+      cd docker ; 
+      sleep 0.5 ; 
+      clear
