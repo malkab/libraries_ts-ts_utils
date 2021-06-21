@@ -2,15 +2,13 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { TsUtilsFormattedOutput } from "../../lib/index";
-
-
+import { TsUtilsFormattedOutput } from "../../src/index";
 
 describe("TsUtilsFormattedOutput", function() {
 
   const fo: TsUtilsFormattedOutput = new TsUtilsFormattedOutput({});
 
-  it("log", function() { 
+  it("log", function() {
 
     expect(
 
@@ -18,7 +16,6 @@ describe("TsUtilsFormattedOutput", function() {
       "log without params"
 
     ).to.deep.equal("\n");
-
 
     expect(
 
@@ -29,11 +26,7 @@ describe("TsUtilsFormattedOutput", function() {
 
   });
 
-
-
-
-
-  it("logError", function() { 
+  it("logError", function() {
 
     expect(
 
@@ -42,11 +35,10 @@ describe("TsUtilsFormattedOutput", function() {
 
     ).to.equal(40);
 
-
     expect(
 
       fo.logError(
-        "message", 
+        "message",
         new Error("this is a terrible mistake")
       ).length,
       "with message and error"
@@ -55,11 +47,7 @@ describe("TsUtilsFormattedOutput", function() {
 
   });
 
-
-
-
-
-  it("hashmapPrettyPrint", function() { 
+  it("hashmapPrettyPrint", function() {
 
     const obj: { [ key: string ]: any } = {
 
@@ -68,8 +56,6 @@ describe("TsUtilsFormattedOutput", function() {
       a: 0
 
     }
-
-
 
     expect(
 
@@ -80,29 +66,25 @@ describe("TsUtilsFormattedOutput", function() {
 averyveryveryverylenghtlykey : a very lenghtly value
 somewhatshorter              : shorter, indeed`);
 
-
-
     expect(
 
       fo.hashmapPrettyPrint({
-        hashmap: obj,  
-        gap: 5, 
-        separator: " >", 
-        exclude: [ "a" ] 
+        hashmap: obj,
+        gap: 5,
+        separator: " >",
+        exclude: [ "a" ]
       }),
       "with options, adding exclude"
 
     ).to.equal(`averyveryveryverylenghtlykey >     a very lenghtly value
 somewhatshorter              >     shorter, indeed`);
 
-
-
     expect(
 
       fo.hashmapPrettyPrint({
-        hashmap: obj, 
-        gap: 1, 
-        separator: " >", 
+        hashmap: obj,
+        gap: 1,
+        separator: " >",
         include: [ "a", "somewhatshorter" ]
       }),
       "with options, adding include"
@@ -110,12 +92,11 @@ somewhatshorter              >     shorter, indeed`);
     ).to.equal(`a               > 0
 somewhatshorter > shorter, indeed`);
 
-
     expect(
 
       fo.hashmapPrettyPrint({
-        hashmap: obj, 
-        gap: 1, 
+        hashmap: obj,
+        gap: 1,
         separator: " >",
         reverse: true
       }),

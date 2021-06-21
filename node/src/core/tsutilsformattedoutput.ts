@@ -1,38 +1,31 @@
-import { TsUtilsTime as tsTime } from "./tsutilstime";
+import { machineTs }  from "./tsutilstime";
 
-import { TsUtilsHashMaps } from "./tsutilshashmaps";
+import { includeKeys, excludeKeys } from "./tsutilshashmaps";
 
 /**
- * 
+ *
  * This class configures a formatted output system.
- * 
+ *
  */
-
 export class TsUtilsFormattedOutput {
 
   /**
-   * 
+   *
    * Local vars
-   * 
+   *
    */
-
   private _dateSeparator: string;
   private _errorPrefix: string;
   private _errorSeparator: string;
 
-
   constructor({
-
-    dateSeparator = ": ",
-    errorPrefix = "ERROR: ",
-    errorSeparator = ": ",
-
-  }: {
-
-    dateSeparator?: string;
-    errorPrefix?: string;
-    errorSeparator?: string;
-
+      dateSeparator = ": ",
+      errorPrefix = "ERROR: ",
+      errorSeparator = ": ",
+    }: {
+      dateSeparator?: string;
+      errorPrefix?: string;
+      errorSeparator?: string;
   }) {
 
     this._dateSeparator = dateSeparator;
@@ -41,18 +34,13 @@ export class TsUtilsFormattedOutput {
 
   }
 
-
-
-
-
   /**
-   * 
+   *
    * Log error format with timestamp.
-   * 
+   *
    */
-
   public logError(
-    message: string, 
+    message: string,
     error: any = ""
   ): string {
 
@@ -68,68 +56,52 @@ export class TsUtilsFormattedOutput {
 
   }
 
-
-
-
-
   /**
-   * 
+   *
    * Log message format with timestamp.
-   * 
+   *
    */
-
   public log(
-    message: string = null
+    message?: string
   ): string {
 
-    return message ? `${tsTime.machineTs()}${this._dateSeparator}${message}` : "\n";
-    
+    return message ? `${machineTs()}${this._dateSeparator}${message}` : "\n";
+
   }
 
-
-
-
   /**
-   * 
+   *
    * Pretty-prints a hashmap with string keys.
-   * 
+   *
    */
-
   public hashmapPrettyPrint({
-
-    hashmap,
-    gap = 0,
-    separator = " : ",
-    exclude = null,
-    include = null,
-    reverse = false
-
-  }: {
-
-    hashmap: { [ key: string ]: any };
-    gap?: number;
-    separator?: string;
-    exclude?: string[];
-    include?: string[];
-    reverse?: boolean;
-
+      hashmap,
+      gap = 0,
+      separator = " : ",
+      exclude,
+      include,
+      reverse = false
+    }: {
+      hashmap: { [ key: string ]: any };
+      gap?: number;
+      separator?: string;
+      exclude?: string[];
+      include?: string[];
+      reverse?: boolean;
   }): string {
 
     let out: string = "";
 
     // Apply include / exclude to hashmap
-
-    hashmap = include !== null ? 
-      TsUtilsHashMaps.includeKeys(hashmap, ...include) :
+    hashmap = include !== undefined ?
+      includeKeys(hashmap, ...(include ? include : [])) :
       hashmap;
 
-    hashmap = exclude !== null ? 
-      TsUtilsHashMaps.excludeKeys(hashmap, ...exclude) :
+    hashmap = exclude !== undefined ?
+      excludeKeys(hashmap, ...(exclude ? exclude: [])) :
       hashmap;
-
 
     // Sort keys
-
     let keys: string[];
 
     if (reverse) {
@@ -150,9 +122,7 @@ export class TsUtilsFormattedOutput {
 
     }
 
-
     // Get max length of keys
-
     let maxLength = 0;
 
     keys.map((x) => {
@@ -163,9 +133,7 @@ export class TsUtilsFormattedOutput {
 
     });
 
-
     // Process hashmap
-    
     keys.map((x) => {
 
       const spaces: number = maxLength - x.length;

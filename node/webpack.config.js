@@ -1,9 +1,11 @@
 const path = require('path');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 module.exports = {
   entry: {
-    mocha: "./src/test/main.test.ts",
-    quicktest: "./src/test/00-quick-test.ts"
+    mocha: "./test/main.test.ts",
+    quicktest: "./test/00_quick_test.ts",
+    index: "./src/index.ts"
   },
   mode: "development",
   watch: true,
@@ -46,5 +48,12 @@ module.exports = {
 
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
-  }
+  },
+
+  plugins: [
+    new FilterWarningsPlugin({
+      exclude: /Critical dependency: the request of a dependency is an expression/
+    })
+  ]
+
 };

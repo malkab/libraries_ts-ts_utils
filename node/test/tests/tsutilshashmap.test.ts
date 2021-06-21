@@ -2,9 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { TsUtilsHashMaps as hm } from "../../lib/index";
-
-
+import * as hm from "../../src/index";
 
 describe("ts-utils-hashmaps tests", function() {
 

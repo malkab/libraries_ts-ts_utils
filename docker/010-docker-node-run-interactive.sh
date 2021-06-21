@@ -6,10 +6,10 @@
 #
 # -----------------------------------------------------------------
 #
-# Runs Node environment. Good for interactive use for 
+# Runs Node environment. Good for interactive use for
 # data science or Node / Express programs, and also for
 # Angular frontend development.
-#  
+#
 # -----------------------------------------------------------------
 
 # Check mlk-context to check. If void, no check will be performed
@@ -21,14 +21,14 @@ NODE_ENV=development
 # Node memory
 NODE_MEMORY=2GB
 # Null for an interactive shell session, the EXEC is passed to /bin/bash
-# with the -c option. Can be used to run Node scripts with 
+# with the -c option. Can be used to run Node scripts with
 # "node whatever" or run npm targets with "npm run whatever"
 EXEC=
 # The network to connect to. Remember that when attaching to the network
 # of an existing container (using container:name) the HOST is
 # "localhost"
 NETWORK=
-# Jupyter mode: runs a Jupyter server with Javascript support if a 
+# Jupyter mode: runs a Jupyter server with Javascript support if a
 # version with this capability is used
 # Jupyter exports automatically the 8888 port
 JUPYTER=false
@@ -36,7 +36,7 @@ JUPYTER=false
 CONTAINER_NAME=ts_utils_dev
 # Container host name
 CONTAINER_HOST_NAME=ts_utils_dev
-# A set of volumes in the form ("source:destination" 
+# A set of volumes in the form ("source:destination"
 # "source:destination"). Most of the times the src folder of the Node
 # source code base is replicated inside the container with the same
 # path so build systems works as expected (see second line as example).
@@ -59,7 +59,7 @@ VOLATILE=true
 # Angular applications traditionally export port 4200
 PORTS=(
   9011:9229
-  9012:9329
+  9013:9329
 )
 # Custom entrypoint
 ENTRYPOINT=/bin/bash
@@ -92,14 +92,14 @@ fi
 if [ ! -z "${EXEC}" ]; then COMMAND="-c \"${EXEC}\"" ; fi
 
 
-if [ ! -z "${NETWORK}" ] ; then 
+if [ ! -z "${NETWORK}" ] ; then
 
   NETWORK="--network=${NETWORK}"
-  
+
 fi
 
 
-if [ "${X11}" = true ] ; then 
+if [ "${X11}" = true ] ; then
 
   X11="-e DISPLAY=host.docker.internal:0"
 
@@ -113,28 +113,28 @@ else
 fi
 
 
-if [ ! -z "${CONTAINER_NAME}" ] ; then 
+if [ ! -z "${CONTAINER_NAME}" ] ; then
 
   CONTAINER_NAME="--name=${CONTAINER_NAME}"
-  
+
 fi
 
 
 if [ ! -z "${CONTAINER_HOST_NAME}" ] ; then
 
   CONTAINER_HOST_NAME="--hostname=${CONTAINER_HOST_NAME}"
-  
+
 fi
 
 
-if [ ! -z "${ENTRYPOINT}" ] ; then 
+if [ ! -z "${ENTRYPOINT}" ] ; then
 
   ENTRYPOINT="--entrypoint ${ENTRYPOINT}"
-    
+
 fi
 
 
-if [ ! -z "${WORKDIR}" ] ; then 
+if [ ! -z "${WORKDIR}" ] ; then
 
   WORKDIR="--workdir ${WORKDIR}"
 
@@ -167,7 +167,7 @@ if [ ! -z "${PORTS}" ] ; then
 fi
 
 
-if [ "$JUPYTER" = true ] ; then 
+if [ "$JUPYTER" = true ] ; then
 
   COMMAND="-c \"jupyter notebook --ip 0.0.0.0 --allow-root\""
   PORTS_F="${PORTS_F} -p 8888:8888 "

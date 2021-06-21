@@ -1,12 +1,13 @@
-dist/test
 node_modules
 build
 src
 typedoc
 .editorconfig
 .jshintrc
-build-npm-package.sh
-README-package-json.md
 tsconfig.json
 tslint.json
 webpack*
+*.tgz
+scripts
+README_boilerplate.md
+test

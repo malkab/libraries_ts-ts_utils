@@ -4,62 +4,65 @@ const nodeExternals = require("webpack-node-externals");
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/lib',
 
-    mode: "production",
-    target: "node",
-    plugins: [
+  entry: "./src/index.ts",
 
-      new CleanWebpackPlugin()
+  mode: "production",
+  target: "node",
+  plugins: [
 
-    ],
+    new CleanWebpackPlugin()
 
-    output: {
+  ],
 
-      filename: '[name].js',
-      path: path.resolve(__dirname, 'dist'),
-      libraryTarget: "commonjs"
+  output: {
 
-    },
+    filename: 'tsutils.js',
+    path: path.resolve(__dirname, 'dist'),
+    libraryTarget: "umd",
+    library: "TsUtils"
 
-    externals: [nodeExternals()],
+  },
 
-    module: {
-      rules: [{
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: [
+  externals: [nodeExternals()],
 
-          path.join(__dirname, '/node_modules/')
-    
-        ]
-      }]
-    },
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: [
 
-    optimization: {
+        path.join(__dirname, '/node_modules/'),
+        path.join(__dirname, "/src/test/")
 
-      minimize: true,
-      minimizer: [new TerserPlugin({
-        parallel: true,
-        terserOptions: {
-          extractComments: true,
-          mangle: {
-            toplevel: true
-          },
-          output: {
-            comments: false
-          }
+      ]
+    }]
+  },
+
+  optimization: {
+
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        extractComments: true,
+        mangle: {
+          toplevel: true
+        },
+        output: {
+          comments: false
         }
-      })]
+      }
+    })]
 
-    },
+  },
 
-    node: {
-      fs: "empty"
-    },
+  node: {
+    fs: "empty"
+  },
 
-    resolve: {
-      extensions: ['.tsx', '.ts', '.js']
-    }
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
 
 };
