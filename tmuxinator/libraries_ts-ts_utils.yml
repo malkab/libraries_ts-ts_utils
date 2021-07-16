@@ -1,0 +1,9 @@
+name: ts-utils
+root: /home/git/libraries_ts/libraries_ts-ts_utils
+
+windows:
+
+  - docker-dev:
+      clear ;
+      sleep 0.2 ;
+      cd docker
