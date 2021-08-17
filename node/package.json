@@ -1,6 +1,6 @@
 {
   "name": "@malkab/ts-utils",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "TypeScript utilities, small functions highly reusable, for back and frontend.",
   "scope": "@malkab",
   "author": {
