@@ -2,11 +2,9 @@
 
 // import { expect } from "chai";
 
-// import { TsUtilsArray } from "../../lib/index";
+// import { TsUtilsArray } from "../../src/index";
 
 // import { A } from "./testclasses";
-
-
 
 // describe("ts-utils-array tests", function() {
 

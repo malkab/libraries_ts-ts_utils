@@ -41,13 +41,13 @@ describe("axios, domain not found", function() {
 
     observables: [ axios({
       method: "get",
-      url: "https://githubSS.com/axios/axios",
+      url: "https://githubeeff.com/axios/axios",
       responseType: "text"
     }) ],
 
     assertions: [
 
-      (o: any) => expect(o.status).to.be.equal("ENOTFOUND")
+      (o: any) => expect(o.status).to.be.equal(-3008)
 
     ],
 
@@ -65,7 +65,7 @@ describe("axios, 404", function() {
 
     observables: [ axios({
       method: "get",
-      url: "https://github.com/axios/axios22",
+      url: "https://github.com/axios/axiosee",
       responseType: "text"
     }) ],
 

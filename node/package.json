@@ -22,19 +22,20 @@
   },
   "private": false,
   "scripts": {
-    "package-json-version": "echo 2020-10-22",
+    "package-json-version": "echo 2021-08-10",
     "clean": "rm -Rf build ; rm -Rf dist",
     "quick-test": "npm-run-all --parallel service:watch:quick-test:server service:build",
     "start": "npm-run-all --parallel service:watch:mocha:server service:build",
     "build": "yarn clean ; yarn service:build-lib",
     "build-with-docs": "yarn clean ; yarn service:build-lib ; yarn build-docs ; rm -Rf docs ; cp -R typedoc/build/html docs",
     "build-docs": "cd typedoc ; ./html ; cd ..",
+    "publish-tar": "yarn build ; yarn pack --filename filename.tar",
     "publish-dev": "yarn build ; yarn publish --patch --no-git-tag-version",
     "publish-production": "yarn build-with-docs ; yarn publish --no-git-tag-version",
     "service:build-lib": "webpack --config webpack-production.config.js --progress",
     "service:build": "webpack --progress --watch",
-    "service:watch:quick-test:server": "nodemon --inspect=0.0.0.0:9329 \"./build/quicktest.js\" --watch \"./build/quicktest.js\"",
-    "service:watch:mocha:server": "nodemon --ext js --watch ./build/ --exec 'mocha --timeout 20000 ./build/mocha.js || true'"
+    "service:watch:quick-test:server": "nodemon --delay 0 --inspect=0.0.0.0:9329 \"./build/quicktest.js\" --watch \"./build/quicktest.js\"",
+    "service:watch:mocha:server": "nodemon --delay 0 --ext js --watch ./build/ --exec 'mocha --timeout 20000 --max-old-space-size=4096 ./build/mocha.js || true'"
   },
   "engines": {
     "node": "^14.0.0"
@@ -42,8 +43,9 @@
   "devDependencies": {
     "@types/chai": "^4.0.0",
     "@types/lodash": "^4.0.0",
-    "@types/mocha": "^8.0.0",
-    "@types/node": "^16.0.0",
+    "@types/mocha": "9.0.0",
+    "@types/node": "^14.0.0",
+    "@types/webpack-env": "^1.16.2",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "eslint": "^7.0.0",
@@ -56,6 +58,7 @@
     "terser-webpack-plugin": "^5.0.0",
     "ts-loader": "^9.0.0",
     "ts-node": "^10.0.0",
+    "tslib": "^2.3.0",
     "typedoc": "^0.21.0",
     "typescript": "^4.0.0",
     "webpack": "^5.0.0",

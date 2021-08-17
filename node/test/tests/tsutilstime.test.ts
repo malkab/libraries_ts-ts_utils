@@ -6,17 +6,6 @@ import * as time from "../../src/index";
 
 describe("humanTd", function() {
 
-  it("without end", function() {
-
-    expect(time.humanTd(Date.now()), "from now()")
-      .is.equal("a few seconds ago");
-
-    expect(time.humanTd(Date.parse("01/01/1980")),
-      "from 01/01/1980")
-      .is.equal("41 years ago");
-
-  })
-
   it("with end", function() {
 
     expect(
