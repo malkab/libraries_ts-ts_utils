@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { enumItemIndex, enumKeys } from "../../src";
+import { enumItemIndex, enumKeys, enumKeysN } from "../../src";
 
 describe("ts-utils-enums tests", function() {
 
@@ -29,6 +29,13 @@ describe("ts-utils-enums tests", function() {
 
     expect(enumKeys(ESTRING)).to.be.deep.equal([ "A", "B", "C" ]);
     expect(enumKeys(ENUMBER)).to.be.deep.equal([ "A", "B", "C" ]);
+
+  })
+
+  it("enumKeysN", function() {
+
+    expect(enumKeysN(ESTRING)).to.be.equal(3);
+    expect(enumKeysN(ENUMBER)).to.be.equal(3);
 
   })
 

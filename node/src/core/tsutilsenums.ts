@@ -21,3 +21,14 @@ export function enumKeys(enumObject: any): string[] {
     .filter((x: any) => typeof x === "string");
 
 }
+
+/**
+ *
+ * Number of items in the ENUM.
+ *
+ */
+export function enumKeysN(enumObject: any): number {
+
+  return enumKeys(enumObject).length;
+
+}
