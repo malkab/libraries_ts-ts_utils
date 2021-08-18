@@ -32,3 +32,14 @@ export function enumKeysN(enumObject: any): number {
   return enumKeys(enumObject).length;
 
 }
+
+/**
+ *
+ * Get item by index.
+ *
+ */
+export function enumGetIndex(enumObject: any, index: number): any {
+
+  return enumObject[enumKeys(enumObject)[index]];
+
+}
