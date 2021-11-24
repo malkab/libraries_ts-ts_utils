@@ -1,6 +1,12 @@
 import * as rx from "rxjs";
 
-const axiosLib = require("axios").default;
+// const axiosLib = require("axios").default;
+
+import post from "axios";
+
+import get from "axios";
+
+import { URLSearchParams } from "url";
 
 /**
  *
@@ -28,10 +34,19 @@ export interface IAxiosResponse {
 
 /**
  *
- * Perform an Axios request.
+ * Response type.
  *
- * @param method
- * Method to use in the request (GET / POST).
+ */
+export enum ERESPONSETYPE {
+  stream = "stream",
+  json = "json",
+  document = "document",
+  text = "text"
+}
+
+/**
+ *
+ * Performs an Axios POST.
  *
  * @param url
  * URL to throw the request at.
@@ -43,22 +58,148 @@ export interface IAxiosResponse {
  * An IAxiosResponse with details of the request response.
  *
  */
-export function axios({
-    method,
-    url,
-    responseType
+export function axiosPost$(
+  url: string,
+  {
+    baseUrl,
+    responseType,
+    xWwwFormUrlEncoded,
+    params
   }: {
-    method: "get" | "post";
-    url: string;
-    responseType?: "stream" | "json" | "document" | "text";
-}): rx.Observable<IAxiosResponse> {
+    baseUrl: string | undefined;
+    responseType?: ERESPONSETYPE;
+    xWwwFormUrlEncoded?: boolean;
+    params?: any;
+  } = {
+    baseUrl: undefined,
+    responseType: ERESPONSETYPE.text,
+    xWwwFormUrlEncoded: false,
+    params: {}
+  }
+): rx.Observable<IAxiosResponse> {
 
   return new rx.Observable<IAxiosResponse>((obs: any) => {
 
-    axiosLib({
-      method: method,
+    // Check params
+    const paramsUrl: any = new URLSearchParams();
+
+    if (params)
+      Object.keys(params).map((x: string) => paramsUrl.append(x, params[x]));
+
+    // Check x-www-form-urlencoded
+    let headers: any = {};
+
+    if (xWwwFormUrlEncoded) headers = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+
+    post({
+      baseURL: baseUrl,
       url: url,
-      responseType: responseType
+      responseType: responseType,
+      headers: headers,
+      params: paramsUrl
+    })
+    .then((o: any) => {
+
+      obs.next(<IAxiosResponse>{
+        data: o.data,
+        headers: o.headers,
+        method: o.config.method,
+        status: o.status,
+        statusText: o.statusText
+      });
+
+      obs.complete();
+
+    })
+    .catch((o: any) => {
+
+      if (o.errno) {
+
+        obs.error(<IAxiosResponse>{
+          headers: o.config.headers,
+          method: o.config.method,
+          status: o.errno,
+          statusText: o.code,
+          data: o.config.data
+        });
+
+      } else {
+
+        obs.error(<IAxiosResponse>{
+          headers: o.response.headers,
+          method: o.response.config.method,
+          status: o.response.status,
+          statusText: o.response.statusText,
+          data: o.response.data
+        });
+
+      }
+
+      obs.complete();
+
+    })
+
+  })
+
+}
+
+/**
+ *
+ * Performs an Axios GET.
+ *
+ * @param url
+ * URL to throw the request at.
+ *
+ * @param responseType
+ * Type of response: stream, json, document, text.
+ *
+ * @returns
+ * An IAxiosResponse with details of the request response.
+ *
+ */
+ export function axiosGet$(
+  url: string,
+  {
+    baseUrl,
+    responseType,
+    xWwwFormUrlEncoded,
+    params
+  }: {
+    baseUrl: string | undefined;
+    responseType?: ERESPONSETYPE;
+    xWwwFormUrlEncoded?: boolean;
+    params?: any;
+  } = {
+    baseUrl: undefined,
+    responseType: ERESPONSETYPE.text,
+    xWwwFormUrlEncoded: false,
+    params: {}
+  }
+): rx.Observable<IAxiosResponse> {
+
+  return new rx.Observable<IAxiosResponse>((obs: any) => {
+
+    // Check params
+    const paramsUrl: any = new URLSearchParams();
+
+    if (params)
+      Object.keys(params).map((x: string) => paramsUrl.append(x, params[x]));
+
+    // Check x-www-form-urlencoded
+    let headers: any = {};
+
+    if (xWwwFormUrlEncoded) headers = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+
+    get({
+      baseURL: baseUrl,
+      url: url,
+      responseType: responseType,
+      headers: headers,
+      params: paramsUrl
     })
     .then((o: any) => {
 

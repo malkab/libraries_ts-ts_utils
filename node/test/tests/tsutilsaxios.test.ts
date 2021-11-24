@@ -2,7 +2,8 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { rxMochaTests, axios } from "../../src/index";
+import { rxMochaTests, axiosPost$, axiosGet$, ERESPONSETYPE }
+  from "../../src/index";
 
 /**
  *
@@ -15,11 +16,11 @@ describe("axios", function() {
 
     testCaseName: "axios",
 
-    observables: [ axios({
-      method: "get",
-      url: "https://github.com/axios/axios",
-      responseType: "text"
-    }) ],
+    observables: [
+
+      axiosGet$("axios/axios", { baseUrl: "https://github.com" })
+
+    ],
 
     assertions: [
 
@@ -39,11 +40,11 @@ describe("axios, domain not found", function() {
 
     testCaseName: "axios",
 
-    observables: [ axios({
-      method: "get",
-      url: "https://githubeeff.com/axios/axios",
-      responseType: "text"
-    }) ],
+    observables: [
+
+      axiosGet$("https://githubeeff.com/axios/axios")
+
+    ],
 
     assertions: [
 
@@ -63,11 +64,11 @@ describe("axios, 404", function() {
 
     testCaseName: "axios",
 
-    observables: [ axios({
-      method: "get",
-      url: "https://github.com/axios/axiosee",
-      responseType: "text"
-    }) ],
+    observables: [
+
+      axiosGet$("https://github.com/axios/axiosee")
+
+    ],
 
     assertions: [
 
