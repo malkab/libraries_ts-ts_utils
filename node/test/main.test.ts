@@ -36,4 +36,7 @@ describe("ts-utils", () => {
   describe("\n\n  --- tsutilsaxios.test ---\n",
     () => require("./tests/tsutilsaxios.test"));
 
+  describe("\n\n  --- tsutilscsv.test ---\n",
+    () => require("./tests/tsutilscsv/tsutilscsv.test"));
+
 });
