@@ -55,7 +55,7 @@ export module csv {
  * The fields to be transformed to by position.
  *
  * @param __namedParameters
- * Papaparse configs, some of the most used ones. Optional.
+ * Papaparse configs, some of the most used ones. All true by default. Optional.
  *
  * @param _namedParameters.dynamicTyping
  * Perform dynamic typing on parsed objects. Defaults to true.
