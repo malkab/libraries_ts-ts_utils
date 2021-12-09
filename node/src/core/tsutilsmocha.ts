@@ -160,9 +160,9 @@ export function rxMochaTests({
         )
 
       )
-      .subscribe(
+      .subscribe({
 
-        (o: any) => {
+        next: (o: any) => {
 
           verboseMessage = verboseMessage ? verboseMessage :
             `        Test Case ${testCaseName}, assertion ${i}, stream: ${JSON.stringify(o)} ${o}`;
@@ -190,9 +190,9 @@ export function rxMochaTests({
 
         },
 
-        (e: Error) => {},
+        error: (e: Error) => {},
 
-        () => {
+        complete: () => {
 
           verboseMessage =
             `        Test Case ${testCaseName}, assertion ${i}, completed`;
@@ -215,7 +215,7 @@ export function rxMochaTests({
 
         }
 
-      )
+      })
 
     })
 
