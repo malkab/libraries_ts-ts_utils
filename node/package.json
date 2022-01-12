@@ -1,6 +1,6 @@
 {
   "name": "@malkab/ts-utils",
-  "version": "6.1.0",
+  "version": "8.0.1",
   "description": "TypeScript utilities, small functions highly reusable, for back and frontend.",
   "scope": "@malkab",
   "author": {
@@ -8,7 +8,7 @@
     "email": "jp.perez.alcantara@gmail.com",
     "url": "http://me.com"
   },
-  "main": "dist/tsutils.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
     "utils",
@@ -28,24 +28,23 @@
     "start": "npm-run-all --parallel service:watch:mocha:server service:build",
     "build": "yarn clean ; yarn service:build-lib",
     "build-with-docs": "yarn clean ; yarn service:build-lib ; yarn build-docs ; rm -Rf docs ; cp -R typedoc/build/html docs",
-    "build-docs": "cd typedoc ; ./html ; cd ..",
-    "publish-tar": "yarn build ; yarn pack --filename filename.tar",
+    "build-docs": "cd typedoc ; ./html ; rm -Rf ../../docs ; cp -R build/html ../../docs ; cd ..",
+    "publish-tar": "yarn build ; yarn pack --filename tsutils.tar",
     "publish-dev": "yarn build ; yarn publish --patch --no-git-tag-version",
-    "publish-production": "yarn build-with-docs ; yarn publish --no-git-tag-version",
+    "publish-prod": "yarn build ; yarn build-docs ; yarn publish --no-git-tag-version",
     "service:build-lib": "webpack --config webpack-production.config.js --progress",
     "service:build": "webpack --progress --watch",
     "service:watch:quick-test:server": "nodemon --delay 0 --inspect=0.0.0.0:9329 \"./build/quicktest.js\" --watch \"./build/quicktest.js\"",
     "service:watch:mocha:server": "nodemon --delay 0 --ext js --watch ./build/ --exec 'mocha --timeout 20000 --max-old-space-size=4096 ./build/mocha.js || true'"
   },
   "engines": {
-    "node": "^14.0.0"
+    "node": "^16.0.0"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/chai": "^4.0.0",
     "@types/lodash": "^4.0.0",
     "@types/mocha": "9.0.0",
-    "@types/node": "^14.0.0",
+    "@types/node": "17.0.8",
     "@types/papaparse": "^5.3.1",
     "@types/webpack-env": "^1.16.2",
     "chai": "^4.2.0",

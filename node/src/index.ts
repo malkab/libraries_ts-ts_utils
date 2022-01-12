@@ -1,21 +1,21 @@
-export * from "./core/tsutilsarray";
+export * from "./core/array";
 
-export * from "./core/tsutilstime";
+export * from "./core/time";
 
-export * from "./core/tsutilshashmaps";
+export * from "./core/hashmap";
 
-export * from "./core/tsutilsformattedoutput";
+export * from "./core/formattedoutput";
 
-export * from "./core/tsutilsenums";
+export * from "./core/enums";
 
 export * from "./core/listcollection";
 
-export * from "./core/tsutilsmaps";
+export * from "./core/map";
 
-export * as OrmError from "./ormerror/index";
+export * as ormerror from "./ormerror/index";
 
-export * from "./core/tsutilsmocha";
+export * from "./core/mocha";
 
-export * from "./core/tsutilsaxios";
+export * from "./core/axios";
 
-export * from "./core/tsutilscsv";
+export * from "./core/csv";
