@@ -1,10 +1,14 @@
 {
-
-    "entryPoints": [
-        "../src"
-    ],
-
-    "name": "ts-utils",
-    "readme": "./markdown/MAINPAGE.md"
-
+  "entryPoints": [ "../src/index.ts" ],
+  "entryPointStrategy": "resolve",
+  "name": "ts-utils",
+  "includeVersion": true,
+  "readme": "./MAINPAGE.md",
+  "sort": "alphabetical",
+  "gitRevision": true,
+  "gitRemote": true,
+  "excludeExternals": true,
+  "excludeProtected": true,
+  "excludePrivate": true,
+  "excludeInternal": true
 }
