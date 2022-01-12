@@ -2,7 +2,7 @@
  *
  * Webpack 5
  *
- * Build the test/00_quick_test.ts for quick testing under watch.
+ * Builds the Mocha tests under watch.
  *
  */
 const path = require("path");
@@ -10,7 +10,7 @@ const path = require("path");
 module.exports = {
 
   entry: {
-    quicktest: "./test/00_quick_test.ts"
+    mocha: "./test/main.test.ts"
   },
 
   target: "node",
@@ -41,9 +41,9 @@ module.exports = {
     (warning, compilation) =>
       (warning.module.resource).indexOf("chokidar") > -1,
 
-    (warning, compilation) =>
-      (warning.module.resource).indexOf("mocha") > -1 &&
-        (warning.message).indexOf("the request of a dependency") > -1,
+   (warning, compilation) =>
+     (warning.module.resource).indexOf("mocha") > -1 &&
+       (warning.message).indexOf("the request of a dependency") > -1,
 
     (warning, compilation) =>
       (warning.message).indexOf("the request of a dependency") > -1,

@@ -14,6 +14,9 @@
     "utils",
     "typescript"
   ],
+  "directories": {
+    "docs": "docs"
+  },
   "license": "UNLICENSED",
   "homepage": "https://github.com/owner/project#readme",
   "repository": {
@@ -22,20 +25,18 @@
   },
   "private": false,
   "scripts": {
-    "package-json-version": "echo 2021-08-10",
-    "clean": "rm -Rf build ; rm -Rf dist",
-    "quick-test": "npm-run-all --parallel service:watch:quick-test:server service:build",
-    "start": "npm-run-all --parallel service:watch:mocha:server service:build",
-    "build": "yarn clean ; yarn service:build-lib",
-    "build-with-docs": "yarn clean ; yarn service:build-lib ; yarn build-docs ; rm -Rf docs ; cp -R typedoc/build/html docs",
-    "build-docs": "cd typedoc ; ./html ; rm -Rf ../../docs ; cp -R build/html ../../docs ; cd ..",
-    "publish-tar": "yarn build ; yarn pack --filename tsutils.tar",
+    "clean": "rm -Rf build/* ; rm -Rf dist/* ; rm -Rf docs",
+    "quicktest": "npm-run-all --parallel service:nodemon:quicktest service:webpack:quicktest",
+    "start": "npm-run-all --parallel service:nodemon:mocha service:webpack:mocha",
+    "build": "yarn clean ; webpack --config webpack.config.js --progress",
+    "publish-tar": "yarn build ; yarn pack --filename filename.tar.gz",
     "publish-dev": "yarn build ; yarn publish --patch --no-git-tag-version",
     "publish-prod": "yarn build ; yarn build-docs ; yarn publish --no-git-tag-version",
-    "service:build-lib": "webpack --config webpack-production.config.js --progress",
-    "service:build": "webpack --progress --watch",
-    "service:watch:quick-test:server": "nodemon --delay 0 --inspect=0.0.0.0:9329 \"./build/quicktest.js\" --watch \"./build/quicktest.js\"",
-    "service:watch:mocha:server": "nodemon --delay 0 --ext js --watch ./build/ --exec 'mocha --timeout 20000 --max-old-space-size=4096 ./build/mocha.js || true'"
+    "build-docs": "cd typedoc ; ./html ; rm -Rf ../../docs ; cp -R build/html ../../docs ; cd ..",
+    "service:nodemon:quicktest": "nodemon --ext js --watch ./build/quicktest.js --exec 'mocha ./build/quicktest.js || true'",
+    "service:nodemon:mocha": "nodemon --ext js --watch ./build/mocha.js --exec 'mocha ./build/mocha.js || true'",
+    "service:webpack:quicktest": "webpack --config webpack-quicktest.config.js --progress",
+    "service:webpack:mocha": "webpack --config webpack-mocha.config.js --progress"
   },
   "engines": {
     "node": "^16.0.0"
@@ -48,7 +49,6 @@
     "@types/papaparse": "^5.3.1",
     "@types/webpack-env": "^1.16.2",
     "chai": "^4.2.0",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "lodash": "^4.0.0",
     "mocha": "^9.0.0",
     "nodemon": "^2.0.0",
