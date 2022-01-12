@@ -1,22 +1,29 @@
-// Doc version: 2021-08-10
-
-// Webpack 5
-
+/**
+ *
+ * Webpack 5
+ *
+ * Build the test/00_quick_test.ts for quick testing under watch.
+ *
+ */
 const path = require("path");
 
 module.exports = {
 
   entry: {
-    mocha: "./test/main.test.ts",
-    quicktest: "./test/00_quick_test.ts",
-    index: "./src/index.ts"
+    quicktest: "./test/00_quick_test.ts"
   },
 
+  target: "node",
   mode: "development",
 
+  // Comment to check warnings
+  stats: "errors-only",
+
+  watch: true,
+
   watchOptions: {
-    poll: true,
-    aggregateTimeout: 300,
+    poll: 200,
+    aggregateTimeout: 200,
     ignored: /node_modules/
   },
 
@@ -35,7 +42,14 @@ module.exports = {
       (warning.module.resource).indexOf("chokidar") > -1,
 
     (warning, compilation) =>
-      (warning.message).indexOf("the request of a dependency") > -1
+      (warning.module.resource).indexOf("mocha") > -1 &&
+        (warning.message).indexOf("the request of a dependency") > -1,
+
+    (warning, compilation) =>
+      (warning.message).indexOf("the request of a dependency") > -1,
+
+    (warning, compilation) =>
+      (warning.message).indexOf("Critical dependency: require function is used in a way in which dependencies cannot be statically extracted") > -1
 
   ],
 
