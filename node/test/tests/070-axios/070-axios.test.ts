@@ -5,10 +5,10 @@ import { expect } from "chai";
 import { mocha, axios } from "../../../src/index";
 
 /**
- *
- * Axios Observables tests.
- *
- */
+
+  Axios Observables tests.
+
+*/
 describe("axios", function() {
 
   mocha.rxMochaTests({

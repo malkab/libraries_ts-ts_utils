@@ -5,17 +5,17 @@ import { hashmap as hm } from "./hashmap";
 export module formattedoutput {
 
 /**
- *
- * This class configures a formatted output system.
- *
- */
+
+  This class configures a formatted output system.
+
+*/
 export class FormattedOutput {
 
   /**
-   *
-   * Local vars
-   *
-   */
+
+    Local vars
+
+  */
   private _dateSeparator: string;
   private _errorPrefix: string;
   private _errorSeparator: string;
@@ -38,10 +38,10 @@ export class FormattedOutput {
   }
 
   /**
-   *
-   * Log error format with timestamp.
-   *
-   */
+
+    Log error format with timestamp.
+
+  */
   public logError(
     message: string,
     error: any = ""
@@ -60,10 +60,10 @@ export class FormattedOutput {
   }
 
   /**
-   *
-   * Log message format with timestamp.
-   *
-   */
+
+    Log message format with timestamp.
+
+  */
   public log(
     message?: string
   ): string {
@@ -73,10 +73,10 @@ export class FormattedOutput {
   }
 
   /**
-   *
-   * Pretty-prints a hashmap with string keys.
-   *
-   */
+
+    Pretty-prints a hashmap with string keys.
+
+  */
   public hashmapPrettyPrint({
       hashmap,
       gap = 0,

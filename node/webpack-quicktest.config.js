@@ -1,10 +1,10 @@
 /**
- *
- * Webpack 5
- *
- * Build the test/00_quick_test.ts for quick testing under watch.
- *
- */
+
+  Webpack 5
+
+  Build the test/00_quick_test.ts for quick testing under watch.
+
+*/
 const path = require("path");
 
 module.exports = {

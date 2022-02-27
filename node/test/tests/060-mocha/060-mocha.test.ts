@@ -11,10 +11,10 @@ const o: rx.Observable<any>[] = [
 ];
 
 /**
- *
- * Base test.
- *
- */
+
+  Base test.
+
+*/
 describe("rxMochaTests Test", function() {
 
   mocha.rxMochaTests({
@@ -76,10 +76,10 @@ describe("rxMochaTests Test", function() {
 })
 
 /**
- *
- * Skipped test.
- *
- */
+
+  Skipped test.
+
+*/
 describe("Skipped test", function() {
 
   it("Skipped test", function() {
@@ -99,10 +99,10 @@ describe("Skipped test", function() {
 })
 
 /**
- *
- * Test without assertions, resorting to raw console.log ones.
- *
- */
+
+  Test without assertions, resorting to raw console.log ones.
+
+*/
 describe("Test without assertions", function() {
 
   mocha.rxMochaTests({

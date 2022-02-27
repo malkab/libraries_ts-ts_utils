@@ -12,8 +12,6 @@ export * from "./core/listcollection";
 
 export * from "./core/map";
 
-export * as ormerror from "./ormerror/index";
-
 export * from "./core/mocha";
 
 export * from "./core/axios";

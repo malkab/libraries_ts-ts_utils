@@ -1,10 +1,10 @@
 /**
- *
- * Webpack 5
- *
- * Builds the library at src/index.ts.
- *
- */
+
+  Webpack 5
+
+  Builds the library at src/index.ts.
+
+*/
 const libraryName = "ts-utils";
 
 const path = require("path");
@@ -14,10 +14,10 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
 
   /**
-   *
-   * This will create two compiled JS, one for each application.
-   *
-   */
+
+    This will create two compiled JS, one for each application.
+
+  */
   entry: {
     library: "./src/index.ts"
   },

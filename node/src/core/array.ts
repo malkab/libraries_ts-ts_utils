@@ -3,10 +3,10 @@ import * as _ from "lodash";
 export module array {
 
 /**
- *
- * Sorts discrete array by number of occurrences.
- *
- */
+
+  Sorts discrete array by number of occurrences.
+
+*/
 export function sortDiscreteArrayByOcurrences(
   arr: any[],
   reverse: boolean = false
@@ -55,14 +55,14 @@ export function sortDiscreteArrayByOcurrences(
 }
 
 /**
- *
- * Iterates through an array of arrays applying a function to each
- * element but keeping the nested structure.
- *
- * @param a         The nested object to loop.
- * @param f         The function to apply.
- *
- */
+
+  Iterates through an array of arrays applying a function to each
+  element but keeping the nested structure.
+
+  @param a         The nested object to loop.
+  @param f         The function to apply.
+
+*/
 export function mapNested(
   a: any,
   f: (x: any) => any
@@ -83,16 +83,16 @@ export function mapNested(
 }
 
 /**
- *
- * Returns a deeply flatten, unique version of an array. If the
- * flatten array has only one element, returns that single element
- * without array.
- *
- * @param arr           The array to flatten.
- * @returns             Either a single element or a flatten array
- *                      of unique ones.
- *
- */
+
+  Returns a deeply flatten, unique version of an array. If the
+  flatten array has only one element, returns that single element
+  without array.
+
+  @param arr           The array to flatten.
+  @returns             Either a single element or a flatten array
+                       of unique ones.
+
+*/
 export function deepFlatten(arr: any): any {
 
   arr = _.uniq(_.flattenDeep(arr));
@@ -110,14 +110,14 @@ export function deepFlatten(arr: any): any {
 }
 
 /**
- *
- * Gets an array of objects and returns an array with the unique
- * objects presents as compared by Lodash **isEqual** function.
- *
- * @param x         The array to process.
- * @returns         An unique array.
- *
- */
+
+  Gets an array of objects and returns an array with the unique
+  objects presents as compared by Lodash **isEqual** function.
+
+  @param x         The array to process.
+  @returns         An unique array.
+
+*/
 export function deepUniqueArray(x: any[]): any[] {
 
   const res: any[] = [ x[0] ];
@@ -151,18 +151,18 @@ export function deepUniqueArray(x: any[]): any[] {
 }
 
 /**
- *
- * Returns an array from the values of a Map<key, value>.
- *
- * @param map         The Map to construct the array from.
- * @param sort        **Optional**. A comparisson function to sort the
- *                    resulting array. As with any array comparisson function,
- *                    it has the prototype (x0: TValue, x1: TValue) => number
- *                    and must return a number that will sort the values in
- *                    terms of being positive or negative.
- * @returns           An array with the Map values, sorted or not.
- *
- */
+
+  Returns an array from the values of a Map<key, value>.
+
+  @param map         The Map to construct the array from.
+  @param sort        **Optional**. A comparisson function to sort the
+                     resulting array. As with any array comparisson function,
+                     it has the prototype (x0: TValue, x1: TValue) => number
+                     and must return a number that will sort the values in
+                     terms of being positive or negative.
+  @returns           An array with the Map values, sorted or not.
+
+*/
 export function fromMap<TValue>(
   map: Map<any, TValue>,
   sort: (x0: TValue, x1: TValue) => number

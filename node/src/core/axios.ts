@@ -8,55 +8,55 @@ import { URLSearchParams } from "url";
 
 
 /**
- *
- * This module encapsulates Axios as Observables.
- *
- */
+
+  This module encapsulates Axios as Observables.
+
+*/
 export module axios {
 
 /**
- *
- * Axios response.
- *
- */
+
+  Axios response.
+
+*/
 export interface IAxiosResponse {
   /**
-   *
-   * Request data.
-   *
-   */
+
+    Request data.
+
+  */
   data: any;
   /**
-   *
-   * HTTP status of the request.
-   *
-   */
+
+    HTTP status of the request.
+
+  */
   status: number;
   /**
-   *
-   * Text of the HTTP status.
-   *
-   */
+
+    Text of the HTTP status.
+
+  */
   statusText: string;
   /**
-   *
-   * Set of headers.
-   *
-   */
+
+    Set of headers.
+
+  */
   headers: any;
   /**
-   *
-   * Method used in the request.
-   *
+
+    Method used in the request.
+
    */
   method: string;
 }
 
 /**
- *
- * Response type.
- *
- */
+
+  Response type.
+
+*/
 export enum ERESPONSETYPE {
   stream = "stream",
   json = "json",
@@ -65,25 +65,25 @@ export enum ERESPONSETYPE {
 }
 
 /**
- *
- * Performs an Axios POST.
- *
- * @param resource
- * Resource to retrieve from the **baseUrl**, if any. Can be the full URL of
- * the resource if there is no **baseUrl**.
- *
- * @param options
- * Options for the request:
- *
- * - **baseUrl:** base URL. The **resource** fill be look for in this base URL.
- * - **responseType:** type of response to ask for.
- * - **xWwwFormUrlEncoded:** flag for a WWW form encoding.
- * - **params:** additional params for the request.
- *
- * @returns
- * An Observable with an IAxiosResponse with details of the request response.
- *
- */
+
+  Performs an Axios POST.
+
+  @param resource
+  Resource to retrieve from the **baseUrl**, if any. Can be the full URL of
+  the resource if there is no **baseUrl**.
+
+  @param options
+  Options for the request:
+
+  - **baseUrl:** base URL. The **resource** fill be look for in this base URL.
+  - **responseType:** type of response to ask for.
+  - **xWwwFormUrlEncoded:** flag for a WWW form encoding.
+  - **params:** additional params for the request.
+
+  @returns
+  An Observable with an IAxiosResponse with details of the request response.
+
+*/
 export function axiosPost$(
   resource: string,
   {
@@ -172,26 +172,26 @@ export function axiosPost$(
 }
 
 /**
- *
- * Performs an Axios GET.
- *
- * @param resource
- * Resource to retrieve from the **baseUrl**, if any. Can be the full URL of
- * the resource if there is no **baseUrl**.
- *
- * @param options
- * Options for the request:
- *
- * - **baseUrl:** base URL. The **resource** fill be look for in this base URL.
- * - **responseType:** type of response to ask for.
- * - **xWwwFormUrlEncoded:** flag for a WWW form encoding.
- * - **params:** additional params for the request.
- *
- * @returns
- * An Observable with an IAxiosResponse with details of the request response.
- *
- */
- export function axiosGet$(
+
+  Performs an Axios GET.
+
+  @param resource
+  Resource to retrieve from the **baseUrl**, if any. Can be the full URL of
+  the resource if there is no **baseUrl**.
+
+  @param options
+  Options for the request:
+
+  - **baseUrl:** base URL. The **resource** fill be look for in this base URL.
+  - **responseType:** type of response to ask for.
+  - **xWwwFormUrlEncoded:** flag for a WWW form encoding.
+  - **params:** additional params for the request.
+
+  @returns
+  An Observable with an IAxiosResponse with details of the request response.
+
+*/
+export function axiosGet$(
   resource: string,
   {
     baseUrl,

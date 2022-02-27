@@ -3,12 +3,12 @@ import m from "moment";
 export module time {
 
 /**
- *
- * Human readable time deltas
- *
- * @param delta
- *
- */
+
+  Human readable time deltas
+
+  @param delta
+
+*/
 export function humanTd(
   start: number,
   end?: number
@@ -19,10 +19,10 @@ export function humanTd(
 }
 
 /**
- *
- * Function to get a human readable timestamp
- *
- */
+
+  Function to get a human readable timestamp
+
+*/
 export function machineTs(
   date?: number,
   format: string = "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]"
@@ -35,11 +35,11 @@ export function machineTs(
 }
 
 /**
- *
- * This function returns a TS suitable to be inserted as part
- * of file paths.
- *
- */
+
+  This function returns a TS suitable to be inserted as part
+  of file paths.
+
+*/
 export function filePathTs(): string {
 
   return machineTs()

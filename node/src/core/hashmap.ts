@@ -1,21 +1,20 @@
 /**
- *
- * Some niceties concerning hashmaps.
- *
- * A hashmap is a { [ key: string ]: any } object.
- *
- */
 
+  Some niceties concerning hashmaps.
+
+  A hashmap is a { [ key: string ]: any } object.
+
+*/
 export module hashmap {
 
 /**
- *
- * Excludes some keys from the hashmap.
- *
- * @param hashmap
- * @param keysToExclude
- *
- */
+
+  Excludes some keys from the hashmap.
+
+  @param hashmap
+  @param keysToExclude
+
+*/
 export function excludeKeys(
 
   hashmap: { [ key: string ]: any },
@@ -39,13 +38,13 @@ export function excludeKeys(
 }
 
 /**
- *
- * Includes some keys of the hashmap.
- *
- * @param hashmap
- * @param keysToExclude
- *
- */
+
+  Includes some keys of the hashmap.
+
+  @param hashmap
+  @param keysToExclude
+
+*/
 export function includeKeys(
 
   hashmap: { [ key: string ]: any },

@@ -1,10 +1,10 @@
 /**
- *
- * Webpack 5
- *
- * Builds the Mocha tests under watch.
- *
- */
+
+  Webpack 5
+
+  Builds the Mocha tests under watch.
+
+*/
 const path = require("path");
 
 module.exports = {
