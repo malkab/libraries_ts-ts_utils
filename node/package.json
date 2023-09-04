@@ -1,6 +1,6 @@
 {
   "name": "@malkab/ts-utils",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "TypeScript utilities, small functions highly reusable, for back and frontend.",
   "scope": "@malkab",
   "author": {
@@ -37,9 +37,6 @@
     "service:nodemon:mocha": "nodemon --ext js --watch ./build/mocha.js --exec 'mocha ./build/mocha.js || true'",
     "service:webpack:quicktest": "webpack --config webpack-quicktest.config.js --progress",
     "service:webpack:mocha": "webpack --config webpack-mocha.config.js --progress"
-  },
-  "engines": {
-    "node": "^16.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.0",
