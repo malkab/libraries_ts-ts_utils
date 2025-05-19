@@ -6,6 +6,6 @@ docker run -ti --rm \
   --user 1000:1000 \
   -v $(pwd)/../:$(pwd)/../ \
   -v ~/.npmrc:/root/.npmrc \
-  -v ~/.npmrc:/home/node/.npmrc \
+  -v ~/.npmrc:/home/node/.npmrc:ro \
   --workdir $(pwd)/../node \
-  registry.gitlab.com/sunnsaas/sunnsaas_v1/sunnsaas-worker-dev:v16
+  malkab/nodejs-dev:16.13.2
