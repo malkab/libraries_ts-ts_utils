@@ -1,0 +1,20 @@
+services:
+  # -------------------
+  #
+  # DevContainer TypeScript.
+  #
+  # -------------------
+  typescript:
+    build:
+      context: .
+      dockerfile: Dockerfile-typescript
+    image: ts_utils_typescript
+    container_name: ts_utils_typescript
+    command: sleep infinity
+
+    volumes:
+      # El .npmrc del host.
+      - /home/malkab/.npmrc:/home/node/.npmrc:ro
+      # Por si hay material DVC implicado, para que funcionen los
+      # symlinks.
+      # - /home/malkab/sync_small/dvc/:/home/malkab/sync_small/dvc/
