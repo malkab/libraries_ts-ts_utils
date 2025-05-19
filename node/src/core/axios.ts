@@ -6,14 +6,6 @@ import get from "axios";
 
 import { URLSearchParams } from "url";
 
-
-/**
- *
- * This module encapsulates Axios as Observables.
- *
- */
-export module axios {
-
 /**
  *
  * Axios response.
@@ -275,7 +267,5 @@ export function axiosPost$(
     })
 
   })
-
-}
 
 }
