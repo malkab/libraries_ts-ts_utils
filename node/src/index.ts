@@ -17,3 +17,5 @@ export * from "./core/mocha";
 export * from "./core/axios";
 
 export * from "./core/csv";
+
+export * as OrmError from "./ormerror/index";

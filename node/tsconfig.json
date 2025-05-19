@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 12",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -25,7 +24,7 @@
     "typeRoots": [
       "./node_modules/@types"
     ],
-    "types": [ "node", "webpack" ],
+    "types": [ "node" ],
     "lib": [ "es2019", "es2020.promise", "es2020.bigint", "es2020.string" ]
   },
   "include": [ "src" ],

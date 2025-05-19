@@ -1,6 +1,6 @@
 {
   "name": "@sunntics/ts-utils",
-  "version": "8.0.6",
+  "version": "8.0.7",
   "description": "TypeScript utilities, small functions highly reusable, for back and frontend.",
   "scope": "@sunntics",
   "author": {
