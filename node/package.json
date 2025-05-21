@@ -1,6 +1,6 @@
 {
   "name": "@sunntics/ts-utils",
-  "version": "8.0.9",
+  "version": "8.0.10",
   "description": "TypeScript utilities, small functions highly reusable, for back and frontend.",
   "scope": "@sunntics",
   "author": {
@@ -28,18 +28,17 @@
   },
   "private": false,
   "scripts": {
-    "clean": "rm -Rf build/* ; rm -Rf dist/* ; rm -Rf docs",
-    "quicktest": "npm-run-all --parallel service:nodemon:quicktest service:webpack:quicktest",
-    "start": "npm-run-all --parallel service:nodemon:mocha service:webpack:mocha",
+    "build-prod": "yarn clean ; NODE_ENV=production yarn build",
     "build": "yarn clean ; webpack --config webpack.config.js --progress",
-    "pub-tar": "yarn build ; yarn pack --filename filename.tar.gz",
-    "pub-dev": "yarn build ; yarn publish --patch --no-git-tag-version",
-    "pub-prod": "yarn build ; yarn build-docs ; yarn publish --no-git-tag-version",
-    "build-docs": "cd typedoc ; ./html ; rm -Rf ../../docs ; cp -R build/html ../../docs ; cd ..",
-    "service:nodemon:quicktest": "nodemon --ext js --watch ./build/quicktest.js --exec 'mocha ./build/quicktest.js || true'",
+    "clean": "rm -Rf build/* ; rm -Rf dist/* ; rm -Rf docs",
+    "install_peer_dep": "npm install --no-save rxjs@7.8.1",
+    "publish-prod": "yarn publish --patch --no-git-tag-version",
+    "quicktest": "npm-run-all --parallel service:nodemon:quicktest service:webpack:quicktest",
     "service:nodemon:mocha": "nodemon --ext js --watch ./build/mocha.js --exec 'mocha ./build/mocha.js || true'",
+    "service:nodemon:quicktest": "nodemon --ext js --watch ./build/quicktest.js --exec 'mocha ./build/quicktest.js || true'",
+    "service:webpack:mocha": "webpack --config webpack-mocha.config.js --progress",
     "service:webpack:quicktest": "webpack --config webpack-quicktest.config.js --progress",
-    "service:webpack:mocha": "webpack --config webpack-mocha.config.js --progress"
+    "start": "npm-run-all --parallel service:nodemon:mocha service:webpack:mocha"
   },
   "devDependencies": {
     "@types/chai": "4.3.20",
@@ -53,13 +52,11 @@
     "mocha": "9.2.2",
     "nodemon": "2.0.22",
     "npm-run-all": "4.1.5",
-    "rxjs": "7.8.1",
     "terser": "5.39.2",
     "terser-webpack-plugin": "5.3.14",
     "ts-loader": "9.5.2",
     "ts-node": "10.9.2",
     "tslib": "2.8.1",
-    "typedoc": "0.22.10",
     "typescript": "5.7.2",
     "webpack": "5.99.8",
     "webpack-cli": "4.10.0",
@@ -69,6 +66,9 @@
     "axios": "1.9.0",
     "moment": "2.30.1",
     "papaparse": "5.5.3"
+  },
+  "peerDependencies": {
+    "rxjs": "7.8.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
