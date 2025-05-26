@@ -1,8 +1,6 @@
-import { time }  from "./time";
+import * as time  from "./time";
 
-import { hashmap as hm } from "./hashmap";
-
-export module formattedoutput {
+import * as hm from "./hashmap";
 
 /**
 
@@ -146,7 +144,5 @@ export class FormattedOutput {
     return out.replace(/\n$/, "");
 
   }
-
-}
 
 }

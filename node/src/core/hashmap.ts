@@ -5,7 +5,6 @@
   A hashmap is a { [ key: string ]: any } object.
 
 */
-export module hashmap {
 
 /**
 
@@ -64,7 +63,5 @@ export function includeKeys(
       }, <{ [ key: string ]: any }>{});
 
   return out;
-
-}
 
 }

@@ -1,7 +1,5 @@
 import * as _ from "lodash";
 
-export module array {
-
 /**
 
   Sorts discrete array by number of occurrences.
@@ -185,7 +183,5 @@ export function fromMap<TValue>(
     return out;
 
   }
-
-}
 
 }

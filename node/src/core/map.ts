@@ -3,7 +3,6 @@
   Some functions to work with maps. A Map is an object Map<key, value>().
 
 */
-export module map {
 
 /**
 
@@ -30,7 +29,5 @@ export function fromArray<TKey, TValue>(
   array.map((x: TValue) => out.set(keyFunction(x), x));
 
   return out;
-
-}
 
 }

@@ -5,7 +5,6 @@ import * as papaparse from "papaparse";
   Some helpers to work with CSV.
 
 */
-export module csv {
 
 /**
 
@@ -130,7 +129,5 @@ export function positionalColumnsCsv(
 
   // Return the transformed object
   return outArray;
-
-}
 
 }

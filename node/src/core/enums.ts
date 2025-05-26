@@ -1,5 +1,3 @@
-export module enums {
-
 /**
 
   Returns the index of a string ENUM item.
@@ -43,7 +41,5 @@ export function enumKeysN(enumObject: any): number {
 export function enumGetIndex(enumObject: any, index: number): any {
 
   return enumObject[enumKeys(enumObject)[index]];
-
-}
 
 }

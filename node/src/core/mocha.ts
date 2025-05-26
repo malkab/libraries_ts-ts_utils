@@ -4,8 +4,6 @@ import * as rx from "rxjs";
 
 import * as rxo from "rxjs/operators";
 
-export module mocha {
-
 /**
 
   Function to handle Observable tests, encapsulating them into an **it** Mocha
@@ -226,7 +224,5 @@ export function rxMochaTests({
     console.log(`        Test ${testCaseName}: inactive, skipping...`);
 
   }
-
-}
 
 }

@@ -1,7 +1,5 @@
 import m from "moment";
 
-export module time {
-
 /**
 
   Human readable time deltas
@@ -46,7 +44,5 @@ export function filePathTs(): string {
     .replace(/-/g, "_")
     .replace(/\s/g, "_")
     .replace(/:/g, "_");
-
-}
 
 }

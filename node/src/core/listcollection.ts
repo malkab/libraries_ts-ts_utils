@@ -1,7 +1,5 @@
 import * as lodash from "lodash";
 
-export module listcollection {
-
 /**
 
   This class holds a collection of lists and implements several
@@ -493,7 +491,5 @@ export class ListCollection<T> {
     }
 
   }
-
-}
 
 }
